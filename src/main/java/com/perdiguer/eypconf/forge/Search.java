@@ -26,6 +26,10 @@ public class Search {
 	{
 		searchresult=new SearchResult(limit, offset);
 		
+		ForgeModule module=new ForgeModule("test");
+		
+		searchresult.add(module);
+		
 		return true;
 	}
 	
