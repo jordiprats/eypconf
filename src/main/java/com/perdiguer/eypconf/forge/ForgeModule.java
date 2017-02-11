@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class ForgeModule {
 	
-	public String uri="";
-	public String slug="";
-	public String name="";
+	public String uri;
+	public String slug;
+	public String name;
 	public int downloads=0;
     public Date created_at=null;
     public Date updated_at=null;
@@ -14,6 +14,7 @@ public class ForgeModule {
     public Date deprecated_for=null;
     public Date superseded_by=null;
     public boolean supported=false;
+    public String version;
     
     public ForgeModule()
     {
