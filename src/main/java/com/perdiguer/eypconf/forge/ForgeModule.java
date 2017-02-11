@@ -14,6 +14,7 @@ public class ForgeModule {
     public Date deprecated_for=null;
     public Date superseded_by=null;
     public boolean supported=false;
+    public ForgeUser owner;
     public String version;
     
     public ForgeModule()
