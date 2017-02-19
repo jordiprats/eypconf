@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 17, 2017 10:18:13 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.perdiguer.eypconf.forge.ForgeModule" table="FORGEMODULE">
+        <id name="validation_score" type="int" access="field">
+            <column name="VALIDATION_SCORE" />
+            <generator class="assigned" />
+        </id>
+        <property name="uri" type="java.lang.String" access="field">
+            <column name="URI" />
+        </property>
+        <property name="slug" type="java.lang.String" access="field">
+            <column name="SLUG" />
+        </property>
+        <property name="name" type="java.lang.String" access="field">
+            <column name="NAME" />
+        </property>
+        <property name="downloads" type="int" access="field">
+            <column name="DOWNLOADS" />
+        </property>
+        <property name="created_at" type="java.util.Date" access="field">
+            <column name="CREATED_AT" />
+        </property>
+        <property name="updated_at" type="java.util.Date" access="field">
+            <column name="UPDATED_AT" />
+        </property>
+        <property name="deprecated_at" type="java.util.Date" access="field">
+            <column name="DEPRECATED_AT" />
+        </property>
+        <property name="deprecated_for" type="java.util.Date" access="field">
+            <column name="DEPRECATED_FOR" />
+        </property>
+        <property name="superseded_by" type="java.util.Date" access="field">
+            <column name="SUPERSEDED_BY" />
+        </property>
+        <property name="supported" type="boolean" access="field">
+            <column name="SUPPORTED" />
+        </property>
+        <many-to-one name="owner" class="com.perdiguer.eypconf.forge.ForgeUser" access="field" fetch="join">
+            <column name="OWNER" />
+        </many-to-one>
+        <property name="version" type="java.lang.String" access="field">
+            <column name="VERSION" />
+        </property>
+        <list name="tags" inverse="false" table="FORGEMODULE" lazy="true" access="field">
+            <key>
+                <column name="VALIDATION_SCORE" />
+            </key>
+            <list-index></list-index>
+            <element type="java.lang.String">
+                <column name="TAGS" />
+            </element>
+        </list>
+        <property name="file_uri" type="java.lang.String" access="field">
+            <column name="FILE_URI" />
+        </property>
+        <property name="file_size" type="int" access="field">
+            <column name="FILE_SIZE" />
+        </property>
+        <property name="file_md5" type="java.lang.String" access="field">
+            <column name="FILE_MD5" />
+        </property>
+        <property name="feedback_score" type="int" access="field">
+            <column name="FEEDBACK_SCORE" />
+        </property>
+        <property name="homepage_url" type="java.lang.String" access="field">
+            <column name="HOMEPAGE_URL" />
+        </property>
+        <property name="issues_url" type="java.lang.String" access="field">
+            <column name="ISSUES_URL" />
+        </property>
+        <many-to-one name="current_release" class="com.perdiguer.eypconf.forge.ForgeModuleRelease" access="field" fetch="join">
+            <column name="CURRENT_RELEASE" />
+        </many-to-one>
+        <list name="releases" inverse="false" table="FORGEMODULERELEASE" lazy="true" access="field">
+            <key>
+                <column name="VALIDATION_SCORE" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.perdiguer.eypconf.forge.ForgeModuleRelease" />
+        </list>
+    </class>
+</hibernate-mapping>
