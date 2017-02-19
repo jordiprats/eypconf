@@ -9,5 +9,16 @@
         <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1/eypconf</property>
         <property name="hibernate.connection.username">eypconf</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <!-- Automatic schema creation (begin) === -->
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+        
+        <property name="show_sql">true</property>
+        
+        <mapping resource="com/perdiguer/eypconf/forge/ForgeUser.hbm.xml"/>
+        
     </session-factory>
 </hibernate-configuration>
