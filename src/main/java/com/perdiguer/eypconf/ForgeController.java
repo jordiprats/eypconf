@@ -23,11 +23,11 @@ public class ForgeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ForgeController.class);
 	
-    @Autowired
-    private ForgeUserDAO userDao;
+//    @Autowired
+//    private ForgeUserDAO userDao;
 	
 	//produces = MediaType.APPLICATION_JSON_VALUE
-	@RequestMapping(value = "/v3/modules", method = RequestMethod.GET)
+    @RequestMapping(value = "/v3/modules", method = RequestMethod.GET)
 	public ResponseEntity<SearchResult> searchModule(
 								@RequestParam(value="query", defaultValue="") String query,
 								@RequestParam(value="owner", defaultValue="") String owner,
@@ -44,9 +44,9 @@ public class ForgeController {
 							) {
 		logger.info("search");
 		
-		List<ForgeUser> listUsers = userDao.list();
-		
-		logger.info("search + " + listUsers.size());
+//		List<ForgeUser> listUsers = userDao.list();
+//		
+//		logger.info("search + " + listUsers.size());
 		
 		Search search=new Search();
 		
