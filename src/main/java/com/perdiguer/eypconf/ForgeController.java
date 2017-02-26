@@ -66,6 +66,8 @@ public class ForgeController {
 							) {
 		logger.info("users list");
 		
+		userDao.list(); //TODO: fer coses amb això
+		
 		return null;
 	}
 
