@@ -2,7 +2,7 @@ package com.perdiguer.eypconf.forge;
 
 import java.util.ArrayList;
 
-public class SearchResult {
+public class SearchModuleResult {
 	
 	public int total=0;
 	public int limit=20;
@@ -12,7 +12,7 @@ public class SearchResult {
 	public String previous=null;
 	public ArrayList<ForgeModule> results=null;
 	
-	protected SearchResult(int limit, int offset)
+	protected SearchModuleResult(int limit, int offset)
 	{
 		this.limit=limit;
 		this.offset=offset;

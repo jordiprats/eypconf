@@ -1,6 +1,6 @@
 package com.perdiguer.eypconf.forge;
 
-public class Search {
+public class SearchModule {
 	
 	String query=null;
 	String owner=null;
@@ -15,16 +15,16 @@ public class Search {
 	int limit=20;
 	int offset=0; 
 	
-	SearchResult searchresult=null;
+	SearchModuleResult searchresult=null;
 	
-	public Search()
+	public SearchModule()
 	{
 		
 	}
 	
 	public boolean doSearch() 
 	{
-		searchresult=new SearchResult(limit, offset);
+		searchresult=new SearchModuleResult(limit, offset);
 		
 		ForgeModule module=new ForgeModule("test");
 		
@@ -33,11 +33,11 @@ public class Search {
 		return true;
 	}
 	
-	public SearchResult getSearchresult() {
+	public SearchModuleResult getSearchresult() {
 		return searchresult;
 	}
 
-	public void setSearchresult(SearchResult searchresult) {
+	public void setSearchresult(SearchModuleResult searchresult) {
 		this.searchresult = searchresult;
 	}
 
