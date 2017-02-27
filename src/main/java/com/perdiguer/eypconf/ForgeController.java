@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.perdiguer.eypconf.forge.SearchModule;
 import com.perdiguer.eypconf.forge.SearchResult;
+import com.perdiguer.eypconf.forge.SearchUser;
 import com.perdiguer.eypconf.forge.ForgeModule;
 import com.perdiguer.eypconf.forge.ForgeModuleRelease;
 import com.perdiguer.eypconf.forge.ForgeUser;
@@ -62,7 +63,14 @@ public class ForgeController {
 							) {
 		logger.info("users list");
 		
-		userDao.list(); //TODO: fer coses amb això
+		SearchUser search=new SearchUser(userDao);
+		
+		if(search.doSearch())
+		{
+			return new ResponseEntity<SearchResult<ForgeModule>>(search.getSearchresult(), HttpStatus.OK);
+		}
+		else 
+			return null;
 		
 		return null;
 	}

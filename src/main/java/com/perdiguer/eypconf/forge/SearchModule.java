@@ -2,18 +2,18 @@ package com.perdiguer.eypconf.forge;
 
 public class SearchModule {
 	
-	String query=null;
-	String owner=null;
-	String tag=null;
-	String sort_by=null;
-	String operatingsystem=null;
-	String puppet_requirement=null;
+	public String query=null;
+	public String owner=null;
+	public String tag=null;
+	public String sort_by=null;
+	public String operatingsystem=null;
+	public String puppet_requirement=null;
 	
-	boolean show_deleted=false;
-	boolean supported=false;
+	public boolean show_deleted=false;
+	public boolean supported=false;
 	
-	int limit=20;
-	int offset=0; 
+	public int limit=20;
+	public int offset=0; 
 	
 	SearchResult<ForgeModule> searchresult=null;
 	
