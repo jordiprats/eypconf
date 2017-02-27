@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.perdiguer.eypconf.forge.SearchModule;
-import com.perdiguer.eypconf.forge.SearchModuleResult;
+import com.perdiguer.eypconf.forge.SearchResult;
+import com.perdiguer.eypconf.forge.ForgeModule;
+import com.perdiguer.eypconf.forge.ForgeModuleRelease;
+import com.perdiguer.eypconf.forge.ForgeUser;
 import com.perdiguer.eypconf.forge.dao.ForgeUserDAO;
 
 @RestController
@@ -24,7 +27,7 @@ public class ForgeController {
 	
 	//produces = MediaType.APPLICATION_JSON_VALUE
     @RequestMapping(value = "/v3/modules", method = RequestMethod.GET)
-	public ResponseEntity<SearchModuleResult> searchModule(
+	public ResponseEntity<SearchResult<ForgeModule>> searchModule(
 								@RequestParam(value="query", defaultValue="") String query,
 								@RequestParam(value="owner", defaultValue="") String owner,
 								@RequestParam(value="tag", defaultValue="") String tag,
@@ -40,25 +43,18 @@ public class ForgeController {
 							) {
 		logger.info("search modules");
 		
-//		List<ForgeUser> listUsers = userDao.list();
-//		
-//		logger.info("search + " + listUsers.size());
-		
 		SearchModule search=new SearchModule();
 		
 		if(search.doSearch())
 		{
-//			ArrayList<SearchResult> list=new ArrayList<SearchResult>();
-//			
-//			list.add();
-			return new ResponseEntity<SearchModuleResult>(search.getSearchresult(), HttpStatus.OK);
+			return new ResponseEntity<SearchResult<ForgeModule>>(search.getSearchresult(), HttpStatus.OK);
 		}
 		else 
 			return null;
 	}
 
     @RequestMapping(value = "/v3/users", method = RequestMethod.GET)
-	public ResponseEntity<SearchModuleResult> searchUser(
+	public ResponseEntity<SearchResult<ForgeUser>> searchUser(
 								@RequestParam(value="sort_by", defaultValue="rank") String sort_by,
 								@RequestParam(value="limit", defaultValue="20") int limit,
 								@RequestParam(value="offset", defaultValue="0") int offset
@@ -72,7 +68,7 @@ public class ForgeController {
 	}
 
     @RequestMapping(value = "/v3/releases", method = RequestMethod.GET)
-	public ResponseEntity<SearchModuleResult> searchRelease(
+	public ResponseEntity<SearchResult<ForgeModuleRelease>> searchRelease(
 								@RequestParam(value="sort_by", defaultValue="rank") String sort_by,
 								@RequestParam(value="limit", defaultValue="20") int limit,
 								@RequestParam(value="offset", defaultValue="0") int offset

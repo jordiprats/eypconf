@@ -15,7 +15,7 @@ public class SearchModule {
 	int limit=20;
 	int offset=0; 
 	
-	SearchModuleResult searchresult=null;
+	SearchResult<ForgeModule> searchresult=null;
 	
 	public SearchModule()
 	{
@@ -24,20 +24,23 @@ public class SearchModule {
 	
 	public boolean doSearch() 
 	{
-		searchresult=new SearchModuleResult(limit, offset);
+		searchresult=new SearchResult<ForgeModule>();
 		
+		searchresult.setLimit(this.limit);
+		searchresult.setOffset(this.offset);
+		
+		//TODO: demo only
 		ForgeModule module=new ForgeModule("test");
-		
 		searchresult.add(module);
 		
 		return true;
 	}
 	
-	public SearchModuleResult getSearchresult() {
+	public SearchResult<ForgeModule> getSearchresult() {
 		return searchresult;
 	}
 
-	public void setSearchresult(SearchModuleResult searchresult) {
+	public void setSearchresult(SearchResult<ForgeModule> searchresult) {
 		this.searchresult = searchresult;
 	}
 
