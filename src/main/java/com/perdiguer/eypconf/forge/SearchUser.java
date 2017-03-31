@@ -11,6 +11,10 @@ public class SearchUser {
 	
 	SearchResult<ForgeUser> searchresult=null;
 	
+	public SearchResult<ForgeUser> getSearchresult() {
+		return searchresult;
+	}
+	
 	public SearchUser(ForgeUserDAO userDao)
 	{
 		this.userDao=userDao;

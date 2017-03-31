@@ -67,10 +67,8 @@ public class ForgeController {
 		
 		if(search.doSearch())
 		{
-			return new ResponseEntity<SearchResult<ForgeModule>>(search.getSearchresult(), HttpStatus.OK);
+			return new ResponseEntity<SearchResult<ForgeUser>>(search.getSearchresult(), HttpStatus.OK);
 		}
-		else 
-			return null;
 		
 		return null;
 	}
