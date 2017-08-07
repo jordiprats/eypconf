@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/platforms', 'PlatformController');
 
 Route::prefix('admin')->group(function () {
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
