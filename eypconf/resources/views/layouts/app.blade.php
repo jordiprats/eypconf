@@ -52,6 +52,17 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                  <li>
+                                      <a href="{{ route('home') }}"
+                                          onclick="event.preventDefault();
+                                                   document.getElementById('home-form').submit();">
+                                          Your profile
+                                      </a>
+
+                                      <form id="home-form" action="{{ route('home') }}" method="GET" style="display: none;">
+                                          {{ csrf_field() }}
+                                      </form>
+                                  </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Platform;
+use Auth;
 
 class PlatformController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,8 +48,25 @@ class PlatformController extends Controller
         ));
 
         // store in the db
+        if(!($user = Auth::user())) {
+          // No user logged in - fuck off
+        } else {
+          $platform = new Platform;
+
+          $platform->platform_name = $request->platform_name;
+          $platform->description = $request->description?$request->description:'';
+          $platform->eyp_userid = substr(md5(uniqid()),0,12);
+          $platform->eyp_magic_hash = substr(md5(uniqid().$user->id),0,12).'_'.substr(md5(uniqid()),0,12);
+          $platform->user_id = $user->id;
+
+          $platform->save();
+
+          // $platform->eyp_userid = $platform->id.'_'.$platform->user_id.'_'.uniqid();
+          // $platform->save();
+        }
 
         // redirect
+        return redirect()->route('platforms.show', $platform->id);
     }
 
     /**
@@ -53,7 +77,8 @@ class PlatformController extends Controller
      */
     public function show($id)
     {
-        //
+      $platform = Platform::find($id);
+      return view('platforms.show')->with('platform', $platform);
     }
 
     /**
