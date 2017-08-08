@@ -23,7 +23,7 @@ class PlatformController extends Controller
      */
     public function create()
     {
-        //
+        return view('platforms.create');
     }
 
     /**
@@ -34,7 +34,15 @@ class PlatformController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate
+        $this->validate($request, array(
+          'platform_name' => 'required|string|max:255',
+          'description' => 'string|max:255',
+        ));
+
+        // store in the db
+
+        // redirect
     }
 
     /**
