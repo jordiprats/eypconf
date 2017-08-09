@@ -17,6 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+Route::get('/settings/profile', 'UserController@edit')->name('user.edit');
+Route::post('/settings/profile', 'UserController@edit')->name('user.edit');
+Route::put('/settings/profile.update', 'UserController@update')->name('user.update');
+Route::post('/settings/profile.update', 'UserController@update')->name('user.update');
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/platforms', 'PlatformController');
 
@@ -25,3 +32,5 @@ Route::prefix('admin')->group(function () {
   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
   Route::get('/', 'AdminController@index')->name('admin.dashboard');
 });
+
+Route::get('/{user}/{platform}', 'PlatformController@getUserPlatform');

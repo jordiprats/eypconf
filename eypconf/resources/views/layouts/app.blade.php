@@ -63,17 +63,29 @@
                                           {{ csrf_field() }}
                                       </form>
                                   </li>
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                                  <li><hr /></li>
+                                  <li>
+                                      <a href="{{ route('user.edit') }}"
+                                          onclick="event.preventDefault();
+                                                   document.getElementById('settings-form').submit();">
+                                          Settings
+                                      </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
+                                      <form id="settings-form" action="{{ route('user.edit') }}" method="GET" style="display: none;">
+                                          {{ csrf_field() }}
+                                      </form>
+                                  </li>
+                                  <li>
+                                      <a href="{{ route('logout') }}"
+                                          onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                          Logout
+                                      </a>
+
+                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                          {{ csrf_field() }}
+                                      </form>
+                                  </li>
                                 </ul>
                             </li>
                         @endif
