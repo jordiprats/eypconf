@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+  @if(Auth::user()==$user)
   <div>
     {!! Form::open(['route' => 'servertypes.create', 'method' => 'get']) !!}
       {{ Form::submit('Create server type', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
@@ -13,6 +14,7 @@
       {{ Form::submit('Create environment', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
     {!! Form::close() !!}
   </div>
+  @endif
   <h1>Platform {{ $platform->platform_name }}</h1>
   <p>{{ $platform->description }}</p>
   <p>{{ $platform->eyp_userid }} / {{ $platform->eyp_magic_hash }} </p>

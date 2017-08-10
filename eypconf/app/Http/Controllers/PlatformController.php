@@ -75,7 +75,7 @@ class PlatformController extends Controller
         $user = User::where('username', $username)->first();
         $platform = Platform::where('user_id', $user->id)
             ->where('platform_name', $platform_name)->first();
-        return view('platforms.show')->with('platform', $platform);
+        return view('platforms.show')->with('platform', $platform)->with('user', $user);
       }
       else
         return "error";
