@@ -36,5 +36,5 @@ Route::prefix('admin')->group(function () {
   Route::get('/', 'AdminController@index')->name('admin.dashboard');
 });
 
-Route::get('/users/{user}/{platform}', 'PlatformController@getUserPlatform')->name('show.eyp.user.platform');
-Route::get('/users/{user}', 'UserController@userPlatforms')->name('show.eyp.user');
+Route::get('/repo/{user}/{platform}', 'PlatformController@getUserPlatform')->name('show.eyp.user.platform');
+Route::get('/repo/{user}', 'UserController@userPlatforms')->name('show.eyp.user');
