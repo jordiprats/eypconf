@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Platform;
 use Auth;
+use App\User;
 
 class PlatformController extends Controller
 {
@@ -69,7 +70,14 @@ class PlatformController extends Controller
 
     public function getUserPlatform($user, $platform)
     {
-      return $user." ".$platform;
+      if(User::where('username', $user)->count() == 1)
+      {
+        $platform = Platform::where('user_id', User::where('username', $user)->first()->id)
+            ->where('platform_name', $platform)->first();
+        return view('platforms.show')->with('platform', $platform);
+      }
+      else
+        return "error";
     }
 
     /**

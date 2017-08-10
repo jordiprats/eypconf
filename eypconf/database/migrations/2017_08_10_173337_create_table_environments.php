@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRelationshipsPlatform extends Migration
+class CreateTableEnvironments extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddRelationshipsPlatform extends Migration
      */
     public function up()
     {
-        Schema::table('platforms', function (Blueprint $table) {
-            $table->integer('user_id')->references('id')->on('users');
+        Schema::create('environments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('environment_name');
+            $table->integer('platform_id')->references('id')->on('platforms');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddRelationshipsPlatform extends Migration
      */
     public function down()
     {
-        Schema::table('platforms', function (Blueprint $table) {
-            $table->dropColumn('user_id');
-        });
+        Schema::dropIfExists('environments');
     }
 }

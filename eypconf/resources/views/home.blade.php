@@ -14,7 +14,7 @@
                   <h1>Platforms</h1>
                   <ul>
                     @foreach ($platforms as $platform)
-                    <li>{{ $platform->platform_name }}</li>
+                    <li><a href="{{ route('show.eyp.user.platform', ['user' => Auth::User()->username, 'platform' => $platform->platform_name ]) }}">{{ $platform->platform_name }}</a></li>
                     @endforeach
                   </ul>
                 </div>

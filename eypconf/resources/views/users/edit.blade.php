@@ -9,6 +9,8 @@
   @endif
   <h1>Public profile</h1>
   <hr/>
+  <strong>Username</strong>: {{ $user->username }}
+
   {{ Form::model($user, array('route' => 'user.update')) }}
       {{ Form::label('name', 'Name:', array('class' => 'address')) }}
       {{ Form::text('name', null, array('class' => 'form-control')) }}
