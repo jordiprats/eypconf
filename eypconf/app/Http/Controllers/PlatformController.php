@@ -68,12 +68,13 @@ class PlatformController extends Controller
         return redirect()->route('platforms.show', $platform->id);
     }
 
-    public function getUserPlatform($user, $platform)
+    public function getUserPlatform($username, $platform_name)
     {
-      if(User::where('username', $user)->count() == 1)
+      if(User::where('username', $username)->count() == 1)
       {
-        $platform = Platform::where('user_id', User::where('username', $user)->first()->id)
-            ->where('platform_name', $platform)->first();
+        $user = User::where('username', $username)->first();
+        $platform = Platform::where('user_id', $user->id)
+            ->where('platform_name', $platform_name)->first();
         return view('platforms.show')->with('platform', $platform);
       }
       else
