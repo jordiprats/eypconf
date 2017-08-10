@@ -11,4 +11,19 @@ class Platform extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function environments()
+    {
+      return $this->hasMany(Environment::class);
+    }
+
+    public function servergroups()
+    {
+      return $this->hasMany(ServerGroup::class);
+    }
+
+    public function servertypes()
+    {
+      return $this->hasMany(ServerType::class);
+    }
 }

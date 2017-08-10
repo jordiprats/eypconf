@@ -3,13 +3,13 @@
 @section('content')
 <div class="container">
   <div>
-    {!! Form::open(['route' => 'platforms.create', 'method' => 'get']) !!}
+    {!! Form::open(['route' => 'servertypes.create', 'method' => 'get']) !!}
       {{ Form::submit('Create server type', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
     {!! Form::close() !!}
-    {!! Form::open(['route' => 'platforms.create', 'method' => 'get']) !!}
+    {!! Form::open(['route' => 'servergroups.create', 'method' => 'get']) !!}
       {{ Form::submit('Create server group', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
     {!! Form::close() !!}
-    {!! Form::open(['route' => 'platforms.create', 'method' => 'get']) !!}
+    {!! Form::open(['route' => 'environments.create', 'method' => 'get']) !!}
       {{ Form::submit('Create environment', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
     {!! Form::close() !!}
   </div>
