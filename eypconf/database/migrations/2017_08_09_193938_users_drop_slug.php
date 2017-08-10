@@ -14,8 +14,8 @@ class UsersDropSlug extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-          $table->dropUnique('slug_uniq_index');
-          $table->dropColumn('slug');
+          // $table->dropUnique('slug_uniq_index');
+          // $table->dropColumn('slug');
         });
     }
 
@@ -27,8 +27,8 @@ class UsersDropSlug extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-          $table->string('slug');
-          $table->unique('slug', 'slug_uniq_index');
+          // $table->string('slug');
+          // $table->unique('slug', 'slug_uniq_index');
         });
     }
 }

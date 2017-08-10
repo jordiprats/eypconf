@@ -5,12 +5,15 @@
   @if(Auth::user()==$user)
   <div>
     {!! Form::open(['route' => 'servertypes.create', 'method' => 'get']) !!}
+      {{ Form::hidden('platform_id', $platform->id) }}
       {{ Form::submit('Create server type', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
     {!! Form::close() !!}
     {!! Form::open(['route' => 'servergroups.create', 'method' => 'get']) !!}
+      {{ Form::hidden('platform_id', $platform->id) }}
       {{ Form::submit('Create server group', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
     {!! Form::close() !!}
     {!! Form::open(['route' => 'environments.create', 'method' => 'get']) !!}
+      {{ Form::hidden('platform_id', $platform->id) }}
       {{ Form::submit('Create environment', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
     {!! Form::close() !!}
   </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UsersSlug extends Migration
+class DescripcioServergroups extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class UsersSlug extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-          // $table->string('slug');
-          // $table->unique('slug', 'slug_uniq_index');
+        Schema::table('servergroups', function (Blueprint $table) {
+            //
         });
     }
 
@@ -26,9 +25,8 @@ class UsersSlug extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-          // $table->dropUnique('slug_uniq_index');
-          // $table->dropColumn('slug');
+        Schema::table('servergroups', function (Blueprint $table) {
+            //
         });
     }
 }

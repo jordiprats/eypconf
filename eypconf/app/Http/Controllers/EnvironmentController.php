@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class EnvironmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +29,7 @@ class EnvironmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('environments.create');
     }
 
     /**
@@ -35,7 +40,22 @@ class EnvironmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate
+        $this->validate($request, array(
+          'environment_name' => 'required|string|max:25',
+          'description' => 'string|max:255',
+        ));
+
+        //store db
+        $environment = new Environment;
+
+        $environment->environment_name = $request->environment_name;
+        $environment->description = $request->description?$request->description:'';
+
+        $environment->save();
+
+
+        //redirect
     }
 
     /**
