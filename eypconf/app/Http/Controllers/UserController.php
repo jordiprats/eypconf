@@ -16,7 +16,7 @@ class UserController extends Controller
 
   public function userPlatforms($user)
   {
-    return view('home')->with('platforms', User::where('username', $user)->first()->platforms);
+    return view('home')->with('platforms', User::where('username', $user)->first()->platforms)->with('user', User::where('username', $user)->first());
   }
 
   /**
