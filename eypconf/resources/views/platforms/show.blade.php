@@ -32,6 +32,9 @@
   <h3>Environments</h3>
   <ul>
     <li>...</li>
+    @foreach ($platform->environments as $environment)
+    <li><a href="{{ route('show.eyp.user.platform.env', ['user' => $user->username, 'platform' => $platform->platform_name, 'environment' => $environment->environment_name]) }}">{{ $environment->environment_name }}</a></li>
+    @endforeach
   </ul>
   <h3>Server groups</h3>
   <ul>
