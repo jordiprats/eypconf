@@ -83,7 +83,7 @@ class EnvironmentController extends Controller
      */
     public function showEnvironment($username, $platform_name, $environment_name)
     {
-      return $username.$platform_name.$environment_name;
+      return $username.' '.$platform_name.' '.$environment_name;
     }
 
     /**
