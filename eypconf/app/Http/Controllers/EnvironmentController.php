@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Environment;
 use Illuminate\Http\Request;
+use App\User;
+use App\Platform;
 
 class EnvironmentController extends Controller
 {
@@ -27,9 +29,16 @@ class EnvironmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($username, $platform_name)
     {
-        return view('environments.create');
+      $user = User::where('username', $username)->first();
+      $platform = Platform::where('user_id', $user->id)
+          ->where('platform_name', $platform_name)->first();
+
+      if($platform->user()->id!=$user->id)
+        return "nasty";
+
+      return view('environments.create')->with('platform', $platform)->with('user', $user);
     }
 
     /**
@@ -38,24 +47,43 @@ class EnvironmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $username, $platform_name)
     {
-        //validate
-        $this->validate($request, array(
-          'environment_name' => 'required|string|max:25',
-          'description' => 'string|max:255',
-        ));
+      $user = User::where('username', $username)->first();
+      $platform = Platform::where('user_id', $user->id)
+          ->where('platform_name', $platform_name)->first();
 
-        //store db
-        $environment = new Environment;
+      if($platform->user!=$user)
+        return "nasty";
 
-        $environment->environment_name = $request->environment_name;
-        $environment->description = $request->description?$request->description:'';
+      //validate
+      $this->validate($request, array(
+        'environment_name' => 'required|string|max:25',
+        'description' => 'string|max:255',
+      ));
 
-        $environment->save();
+      //store db
+      $environment = new Environment;
 
+      $environment->environment_name = $request->environment_name;
+      $environment->description = $request->description?$request->description:'';
+      $environment->platform_id = $platform->id;
 
-        //redirect
+      $environment->save();
+
+      //redirect
+      return redirect()->route('show.eyp.user.platform.env', [ 'user' => $user->username, 'platform' => $platform->platform_name, 'environment' => $environment->environment_name ]);
+    }
+
+    /**
+     * search for environment resource
+     *
+     * @param  \App\Environment  $environment
+     * @return \Illuminate\Http\Response
+     */
+    public function showEnvironment($username, $platform_name, $environment_name)
+    {
+      return $username.$platform_name.$environment_name;
     }
 
     /**
@@ -66,7 +94,7 @@ class EnvironmentController extends Controller
      */
     public function show(Environment $environment)
     {
-        //
+      return "???";
     }
 
     /**

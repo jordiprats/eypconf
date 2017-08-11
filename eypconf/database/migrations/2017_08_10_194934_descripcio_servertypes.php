@@ -26,7 +26,7 @@ class DescripcioServertypes extends Migration
     public function down()
     {
         Schema::table('servertypes', function (Blueprint $table) {
-            //
+            $table->dropColumn('description');
         });
     }
 }

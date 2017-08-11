@@ -14,7 +14,7 @@ class DescripcioEnvironment extends Migration
     public function up()
     {
         Schema::table('environments', function (Blueprint $table) {
-            //
+            $table->string('description');
         });
     }
 
@@ -26,7 +26,7 @@ class DescripcioEnvironment extends Migration
     public function down()
     {
         Schema::table('environments', function (Blueprint $table) {
-            //
+            $table->dropColumn('description');
         });
     }
 }

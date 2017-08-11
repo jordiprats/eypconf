@@ -14,7 +14,7 @@ class DescripcioServergroups extends Migration
     public function up()
     {
         Schema::table('servergroups', function (Blueprint $table) {
-            //
+            $table->string('description');
         });
     }
 
@@ -26,7 +26,7 @@ class DescripcioServergroups extends Migration
     public function down()
     {
         Schema::table('servergroups', function (Blueprint $table) {
-            //
+            $table->dropColumn('description');
         });
     }
 }

@@ -4,7 +4,7 @@
 <div class="container">
   <h1>Create a new environment</h1>
   <hr/>
-  {!! Form::open(['route' => 'environments.store']) !!}
+  {!! Form::open(['route' => ['environments.store', $user->username, $platform->platform_name]]) !!}
     {{ Form::label('environment_name', 'Environment name:') }}
     {{ Form::text('environment_name', null, array('class' => 'form-control')) }}
     {{ Form::label('description', 'Short description:') }}

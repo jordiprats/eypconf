@@ -24,9 +24,6 @@ Route::post('/settings/profile.update', 'UserController@update')->name('user.upd
 
 
 Route::resource('/platforms', 'PlatformController');
-Route::resource('/environments', 'EnvironmentController');
-Route::resource('/servergroups', 'ServerGroupController');
-Route::resource('/servertypes', 'ServerGroupController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -36,5 +33,20 @@ Route::prefix('admin')->group(function () {
   Route::get('/', 'AdminController@index')->name('admin.dashboard');
 });
 
-Route::get('/repo/{user}/{platform}', 'PlatformController@getUserPlatform')->name('show.eyp.user.platform');
-Route::get('/repo/{user}', 'UserController@userPlatforms')->name('show.eyp.user');
+Route::prefix('/repo/{user}')->group(function () {
+  Route::prefix('/{platform}')->group(function () {
+    Route::resource('/environments', 'EnvironmentController');
+    Route::resource('/servergroups', 'ServerGroupController');
+    Route::resource('/servertypes', 'ServerGroupController');
+
+    Route::get('/env/{environment}', 'EnvironmentController@showEnvironment')->name('show.eyp.user.platform.env');
+    Route::get('/sg/{servergroup}', 'PlatformController@getUserPlatform')->name('show.eyp.user.platform.sg');
+    Route::get('/st/{servertype}', 'PlatformController@getUserPlatform')->name('show.eyp.user.platform.st');
+    Route::get('/', 'PlatformController@getUserPlatform')->name('show.eyp.user.platform');
+  });
+  Route::get('/', 'UserController@userPlatforms')->name('show.eyp.user');
+});
+
+
+// Route::get('/repo/{user}/{platform}', 'PlatformController@getUserPlatform')->name('show.eyp.user.platform');
+// Route::get('/repo/{user}', 'UserController@userPlatforms')->name('show.eyp.user');
