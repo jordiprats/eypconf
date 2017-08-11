@@ -81,6 +81,7 @@ class EnvironmentController extends Controller
      * @param  \App\Environment  $environment
      * @return \Illuminate\Http\Response
      */
+    //TODO: falta implemetar
     public function showEnvironment($username, $platform_name, $environment_name)
     {
       return $username.' '.$platform_name.' '.$environment_name;
