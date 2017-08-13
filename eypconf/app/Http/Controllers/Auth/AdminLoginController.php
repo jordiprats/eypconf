@@ -8,35 +8,34 @@ use Auth;
 
 class AdminLoginController extends Controller
 {
-    public function __construct()
+  public function __construct()
+  {
+    $this->middleware('guest:admin');
+  }
+
+  public function showLoginForm()
+  {
+    return view('auth.admin-login');
+  }
+
+  public function login(Request $request)
+  {
+    //validate
+    $this->validate($request, [
+      'email' => 'required|email',
+      'password' => 'required|min:6'
+    ]);
+
+    $credentials = [
+      'email' => $request->email,
+      'password' => $request->password,
+    ];
+
+    if(Auth::guard('admin')->attempt($credentials, $request->remember))
     {
-      $this->middleware('guest:admin');
+      return redirect()->intended(route('admin.dashboard'));
     }
 
-    public function showLoginForm()
-    {
-      return view('auth.admin-login');
-    }
-
-    public function login(Request $request)
-    {
-      //validate
-      $this->validate($request, [
-        'email' => 'required|email',
-        'password' => 'required|min:6'
-      ]);
-
-      $credentials = [
-        'email' => $request->email,
-        'password' => $request->password,
-      ];
-
-      if(Auth::guard('admin')->attempt($credentials, $request->remember))
-      {
-        return redirect()->intended(route('admin.dashboard'));
-      }
-
-      return redirect()->back()->withInput($request->only('email', 'remember'));
-
-    }
+    return redirect()->back()->withInput($request->only('email', 'remember'));
+  }
 }

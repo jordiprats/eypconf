@@ -11,7 +11,7 @@ class UserController extends Controller
 {
   public function __construct()
   {
-      $this->middleware('auth');
+    $this->middleware('auth');
   }
 
   public function userPlatforms($user)
@@ -27,7 +27,7 @@ class UserController extends Controller
    */
   public function edit()
   {
-      return view('users.edit')->with('user', Auth::user());
+    return view('users.edit')->with('user', Auth::user());
   }
 
   /**
@@ -39,20 +39,20 @@ class UserController extends Controller
    */
   public function update(Request $request)
   {
-      //validate
-      $this->validate($request, array(
-        'name' => 'required|string|max:255',
-      ));
+    //validate
+    $this->validate($request, array(
+      'name' => 'required|string|max:255',
+    ));
 
-      //save
-      $user = Auth::user();
-      $user->name = $request->input('name');
+    //save
+    $user = Auth::user();
+    $user->name = $request->input('name');
 
-      //flash data
-      Session::flash('status', 'Profile updated!');
-      Session::flash('status-class', 'alert-success');
+    //flash data
+    Session::flash('status', 'Profile updated!');
+    Session::flash('status-class', 'alert-success');
 
-      //redirect
-      return view('users.edit')->with('user', Auth::user());
+    //redirect
+    return view('users.edit')->with('user', Auth::user());
   }
 }
