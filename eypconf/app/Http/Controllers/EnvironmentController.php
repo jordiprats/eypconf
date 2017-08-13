@@ -35,8 +35,8 @@ class EnvironmentController extends Controller
     $platform = Platform::where('user_id', $user->id)
         ->where('platform_name', $platform_name)->first();
 
-    if($platform->user!=$user)
-      return "nasty";
+    // if($platform->user!=$user)
+    //   return "nasty";
 
     return view('environments.create')->with('platform', $platform)->with('user', $user);
   }
@@ -53,8 +53,8 @@ class EnvironmentController extends Controller
     $platform = Platform::where('user_id', $user->id)
         ->where('platform_name', $platform_name)->first();
 
-    if($platform->user!=$user)
-      return "nasty";
+    // if($platform->user!=$user)
+    //   return "nasty";
 
     //validate
     $this->validate($request, array(
