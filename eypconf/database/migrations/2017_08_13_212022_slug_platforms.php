@@ -14,7 +14,7 @@ class SlugPlatforms extends Migration
     public function up()
     {
       Schema::table('platforms', function (Blueprint $table) {
-        $table->string('slug');
+        // $table->string('slug');
       });
     }
 
@@ -26,7 +26,7 @@ class SlugPlatforms extends Migration
     public function down()
     {
       Schema::table('platforms', function (Blueprint $table) {
-        $table->dropColumn('slug');
+        // $table->dropColumn('slug');
       });
     }
 }

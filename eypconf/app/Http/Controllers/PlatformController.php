@@ -56,7 +56,7 @@ class PlatformController extends Controller
 
         $platform->platform_name = $request->platform_name;
         $platform->description = $request->description?$request->description:'';
-        $platform->slug = str_slug($request->platform_name, '_');
+        $platform->slug = str_slug($request->platform_name, '-');
         $platform->eyp_userid = str_slug($request->platform_name, '_')."_".substr(md5(uniqid()),0,12);
         $platform->eyp_magic_hash = substr(md5(uniqid().$user->id),0,12).substr(md5($platform->description.uniqid().$request->platform_name),0,12);
         $platform->user_id = $user->id;
@@ -74,7 +74,7 @@ class PlatformController extends Controller
     {
       $user = User::where('username', $username)->first();
       $platform = Platform::where('user_id', $user->id)
-          ->where('platform_name', $platform_name)->first();
+          ->where('slug', $platform_name)->first();
       return view('platforms.show')->with('platform', $platform)->with('user', $user);
     }
     else
