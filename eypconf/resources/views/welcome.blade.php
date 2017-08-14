@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="container">
-  news, bla bla bla
+  news
+  <ul>
+    @foreach ($users as $user)
+    <li>{{ $user->username }}</li>
+    @endforeach
+  </ul>
 </div>
 @endsection
