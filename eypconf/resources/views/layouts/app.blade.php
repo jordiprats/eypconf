@@ -65,7 +65,7 @@
                                   </li>
                                   <li>
 
-                                    <a href="" onclick="TogetherJSConfig_getUserName = function () {return '{{ Auth::user()->name }}';}; TogetherJS(this); return false;">Share session</a>
+                                    <a href="" onclick="TogetherJSConfig_toolName = 'collaboration'; TogetherJSConfig_getUserName = function () {return '{{ Auth::user()->name }}';}; TogetherJS(this); return false;">Share session</a>
                                   </li>
                                   <li><hr /></li>
                                   <li>
