@@ -63,6 +63,10 @@
                                           {{ csrf_field() }}
                                       </form>
                                   </li>
+                                  <li>
+
+                                    <a href="" onclick="TogetherJSConfig_getUserName = function () {return '{{ Auth::user()->name }}';}; TogetherJS(this); return false;">Share session</a>
+                                  </li>
                                   <li><hr /></li>
                                   <li>
                                       <a href="{{ route('user.edit') }}"
@@ -99,5 +103,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://togetherjs.com/togetherjs-min.js"></script>
 </body>
 </html>
