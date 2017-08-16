@@ -12,10 +12,17 @@
   <strong>Username</strong>: {{ $user->username }}
 
   {{ Form::model($user, array('route' => 'user.update')) }}
-      {{ Form::label('name', 'Name:', array('class' => 'address')) }}
-      {{ Form::text('name', null, array('class' => 'form-control')) }}
-      <hr />
-      {{ Form::submit('Save', array('class'=>'btn-success btn-lg')) }}
+    <div class="image-upload">
+      <label for="file-input">
+        <img src="http://www.truthordarepics.com/sexstoryarchive/datingpics/images/girls20.jpg"/>
+      </label>
+
+      <input id="file-input" type="file" style="display: none" />
+    </div>
+    {{ Form::label('name', 'Name:', array('class' => 'address')) }}
+    {{ Form::text('name', null, array('class' => 'form-control')) }}
+    <hr />
+    {{ Form::submit('Save', array('class'=>'btn-success btn-lg')) }}
   {{ Form::close() }}
 </div>
 @endsection
