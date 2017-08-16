@@ -14,7 +14,7 @@
   {{ Form::model($user, array('route' => 'user.update')) }}
     <div class="image-upload">
       <label for="file-input">
-        <img src="http://www.truthordarepics.com/sexstoryarchive/datingpics/images/girls20.jpg"/>
+        <img src=""/>
       </label>
 
       <input id="file-input" type="file" style="display: none" />
