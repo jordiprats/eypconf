@@ -11,18 +11,24 @@
   <hr/>
   <strong>Username</strong>: {{ $user->username }}
 
+  <div class="row">
   {{ Form::model($user, array('route' => 'user.update')) }}
-    <div class="image-upload">
-      <label for="file-input">
-        <img src=""/>
-      </label>
+    <div class="col-*-*">
+      <div class="image-upload">
+        <label for="file-input">
+          <img src="/img/users/profile/{{ $user->avatar }}"/>
+        </label>
 
-      <input id="file-input" type="file" style="display: none" />
+        <input id="file-input" type="file" style="display: none" />
+      </div>
     </div>
-    {{ Form::label('name', 'Name:', array('class' => 'address')) }}
-    {{ Form::text('name', null, array('class' => 'form-control')) }}
-    <hr />
-    {{ Form::submit('Save', array('class'=>'btn-success btn-lg')) }}
+    <div class="col-*-*">
+      {{ Form::label('name', 'Name:', array('class' => 'address')) }}
+      {{ Form::text('name', null, array('class' => 'form-control')) }}
+      <hr />
+      {{ Form::submit('Save', array('class'=>'btn-success btn-lg')) }}
+    </div>
   {{ Form::close() }}
+  </div>
 </div>
 @endsection

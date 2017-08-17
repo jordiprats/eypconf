@@ -56,7 +56,7 @@
                                       <a href="{{ route('home') }}"
                                           onclick="event.preventDefault();
                                                    document.getElementById('home-form').submit();">
-                                          Your profile
+                                          Your platforms
                                       </a>
 
                                       <form id="home-form" action="{{ route('home') }}" method="GET" style="display: none;">
