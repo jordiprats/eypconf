@@ -9,7 +9,6 @@
   @endif
   <h1>Public profile</h1>
   <hr/>
-  <strong>Username</strong>: {{ $user->username }}
 
   <div class="row">
   {{ Form::model($user, array('route' => 'user.update')) }}
@@ -22,7 +21,10 @@
         <input id="file-input" type="file" style="display: none" />
       </div>
     </div>
+    <hr />
     <div class="col-*-*">
+      {{ Form::label('username', 'Username:', array('class' => 'address')) }}
+      {{ $user->username }}
       {{ Form::label('name', 'Name:', array('class' => 'address')) }}
       {{ Form::text('name', null, array('class' => 'form-control')) }}
       <hr />
