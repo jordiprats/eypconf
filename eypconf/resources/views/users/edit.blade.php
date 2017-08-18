@@ -23,8 +23,8 @@
     </div>
     <hr />
     <div class="col-*-*">
-      {{ Form::label('username', 'Username:', array('class' => 'address')) }}
-      {{ $user->username }}
+      <p>{{ Form::label('username', 'Username:', array('class' => 'address')) }}
+      {{ $user->username }}</p>
       {{ Form::label('name', 'Name:', array('class' => 'address')) }}
       {{ Form::text('name', null, array('class' => 'form-control')) }}
       <hr />
