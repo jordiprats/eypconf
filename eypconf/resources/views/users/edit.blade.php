@@ -16,7 +16,7 @@
     <div class="col-*-*">
       <div class="image-upload">
         <label for="file-input">
-          <img src="/img/users/profile/{{ $user->avatar }}"/>
+          <img src="/img/users/profile/{{ $user->avatar }}" class="img-responsive img-rounded"/>
         </label>
 
         <input id="file-input" type="file" style="display: none" />
