@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Platform;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -12,14 +14,16 @@ class GitInit implements ShouldQueue
 {
   use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+  protected $platform;
+
   /**
    * Create a new job instance.
    *
    * @return void
    */
-  public function __construct()
+  public function __construct(Platform $platform)
   {
-    //
+    $this->platform = $platform;
   }
 
   /**
@@ -29,6 +33,10 @@ class GitInit implements ShouldQueue
    */
   public function handle()
   {
-    //
+    // creem contenidor de dades
+    // docker run -d -n $platform->id -t eyp/git-repo
+
+    // creem repo pel contenidor
+    // ...
   }
 }
