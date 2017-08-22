@@ -35,9 +35,9 @@ class GitInit implements ShouldQueue
   {
     // creem contenidor de dades
     // docker run -d -n $platform->id -t eyp/git-repo
-    echo exec("docker run -d -n ".$this->platform->id." -t eyp/git-repo");
+    echo exec("docker run -d --name platformid_".$this->platform->id." -t eyp/git-repo");
 
     // creem repo pel contenidor
-    echo exec("docker run --volumes-from ".$this->platform->id." -t eyp/git git -C /repo init");
+    echo exec("docker run --volumes-from platformid_".$this->platform->id." -t eyp/git -- git -C /repo init");
   }
 }
