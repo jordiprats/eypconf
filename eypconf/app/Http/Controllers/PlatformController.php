@@ -50,10 +50,13 @@ class PlatformController extends Controller
       ));
 
       // store in the db
-      if(!($user = Auth::user())) {
+      if(!($user = Auth::user()))
+      {
         // No user logged in - fuck off
 	      return redirect()->route('platforms.create');
-      } else {
+      }
+      else
+      {
         $platform = new Platform;
 
         $platform->platform_name = $request->platform_name;
