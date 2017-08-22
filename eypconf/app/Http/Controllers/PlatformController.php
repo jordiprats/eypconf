@@ -52,6 +52,7 @@ class PlatformController extends Controller
       // store in the db
       if(!($user = Auth::user())) {
         // No user logged in - fuck off
+	      return redirect()->route('platforms.create');
       } else {
         $platform = new Platform;
 
@@ -59,7 +60,7 @@ class PlatformController extends Controller
         $platform->description = $request->description?$request->description:'';
         $platform->slug = str_slug($request->platform_name, '-');
         $platform->eyp_userid = str_slug($request->platform_name, '_')."_".substr(md5(uniqid()),0,12);
-        $platform->eyp_magic_hash = substr(str_random(10).md5(uniqid().$user->id),0,12).substr(md5(str_random(10).$platform->description.uniqid().$request->platform_name),0,12);
+        $platform->eyp_magic_hash = substr(md5(str_random(10).uniqid().$user->id),0,12).substr(md5(str_random(10).$platform->description.uniqid().$request->platform_name),0,12);
         $platform->user_id = $user->id;
 
         $platform->save();
