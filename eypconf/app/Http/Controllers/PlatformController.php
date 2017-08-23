@@ -72,7 +72,7 @@ class PlatformController extends Controller
       }
 
       // redirect
-      return redirect()->route('show.eyp.user.platform', [ 'user' => $user->username, 'platform' => $platform->platform_name ]);
+      return redirect()->route('show.eyp.user.platform', [ 'user' => $user->username, 'platform' => $platform->slug]);
   }
 
   public function getUserPlatform($username, $platform_name)

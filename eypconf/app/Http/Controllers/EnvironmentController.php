@@ -68,11 +68,12 @@ class EnvironmentController extends Controller
     $environment->environment_name = $request->environment_name;
     $environment->description = $request->description?$request->description:'';
     $environment->platform_id = $platform->id;
+    //TODO: afegir slug per URL igual que platform
 
     $environment->save();
 
     //redirect
-    return redirect()->route('show.eyp.user.platform.env', [ 'user' => $user->username, 'platform' => $platform->platform_name, 'environment' => $environment->environment_name ]);
+    return redirect()->route('show.eyp.user.platform.env', [ 'user' => $user->username, 'platform' => $platform->slug, 'environment' => $environment->environment_name ]);
   }
 
   /**
