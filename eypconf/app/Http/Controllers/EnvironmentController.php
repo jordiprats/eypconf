@@ -57,6 +57,7 @@ class EnvironmentController extends Controller
     //   return "nasty";
 
     //validate
+    //TODO: validació index uniq - https://laravel.io/forum/03-11-2014-validation-unique-to-user
     $this->validate($request, array(
       'environment_name' => 'required|string|max:25',
       'description' => 'string|max:255',
