@@ -12,7 +12,7 @@ class PlatformController extends Controller
 {
   public function __construct()
   {
-      $this->middleware('auth');
+    $this->middleware('auth');
   }
 
   /**
@@ -22,7 +22,7 @@ class PlatformController extends Controller
    */
   public function index()
   {
-      //
+    //
   }
 
   /**
@@ -32,7 +32,7 @@ class PlatformController extends Controller
    */
   public function create()
   {
-      return view('platforms.create');
+    return view('platforms.create');
   }
 
   /**
@@ -43,36 +43,36 @@ class PlatformController extends Controller
    */
   public function store(Request $request)
   {
-      // validate
-      $this->validate($request, array(
-        'platform_name' => 'required|string|max:255',
-        'description' => 'string|max:255',
-      ));
+    // validate
+    $this->validate($request, array(
+      'platform_name' => 'required|string|max:255',
+      'description' => 'string|max:255',
+    ));
 
-      // store in the db
-      if(!($user = Auth::user()))
-      {
-        // No user logged in - fuck off
-	      return redirect()->route('platforms.create');
-      }
-      else
-      {
-        $platform = new Platform;
+    // store in the db
+    if(!($user = Auth::user()))
+    {
+      // No user logged in - fuck off
+      return redirect()->route('platforms.create');
+    }
+    else
+    {
+      $platform = new Platform;
 
-        $platform->platform_name = $request->platform_name;
-        $platform->description = $request->description?$request->description:'';
-        $platform->slug = str_slug($request->platform_name, '-');
-        $platform->eyp_userid = str_slug($request->platform_name, '_')."_".substr(md5(uniqid()),0,12);
-        $platform->eyp_magic_hash = substr(md5(str_random(10).uniqid().$user->id),0,12).substr(md5(str_random(10).$platform->description.uniqid().$request->platform_name),0,12);
-        $platform->user_id = $user->id;
+      $platform->platform_name = $request->platform_name;
+      $platform->description = $request->description?$request->description:'';
+      $platform->slug = str_slug($request->platform_name, '-');
+      $platform->eyp_userid = str_slug($request->platform_name, '_')."_".substr(md5(uniqid()),0,12);
+      $platform->eyp_magic_hash = substr(md5(str_random(10).uniqid().$user->id),0,12).substr(md5(str_random(10).$platform->description.uniqid().$request->platform_name),0,12);
+      $platform->user_id = $user->id;
 
-        $platform->save();
+      $platform->save();
 
-        dispatch(new GitInit($platform));
-      }
+      dispatch(new GitInit($platform));
+    }
 
-      // redirect
-      return redirect()->route('show.eyp.user.platform', [ 'user' => $user->username, 'platform' => $platform->slug]);
+    // redirect
+    return redirect()->route('show.eyp.user.platform', [ 'user' => $user->username, 'platform' => $platform->slug]);
   }
 
   public function getUserPlatform($username, $platform_name)
@@ -108,7 +108,7 @@ class PlatformController extends Controller
    */
   public function edit($id)
   {
-      //
+    //
   }
 
   /**
@@ -120,7 +120,7 @@ class PlatformController extends Controller
    */
   public function update(Request $request, $id)
   {
-      //
+    //
   }
 
   /**
@@ -131,6 +131,6 @@ class PlatformController extends Controller
    */
   public function destroy($id)
   {
-      //
+    //
   }
 }
