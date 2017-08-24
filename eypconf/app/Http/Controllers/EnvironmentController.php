@@ -69,7 +69,6 @@ class EnvironmentController extends Controller
     $environment->slug = str_slug($request->environment_name, '-');
     $environment->description = $request->description?$request->description:'';
     $environment->platform_id = $platform->id;
-    //TODO: afegir slug per URL igual que platform
 
     $environment->save();
 
