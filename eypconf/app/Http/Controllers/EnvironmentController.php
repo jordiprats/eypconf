@@ -56,22 +56,26 @@ class EnvironmentController extends Controller
     // if($platform->user!=$user)
     //   return "nasty";
 
+    $request->merge(array('slug' => str_slug($request->environment_name, '-')));
+
     //validate
     //TODO: validació index uniq - https://laravel.io/forum/03-11-2014-validation-unique-to-user
     if($this->validate($request, array(
       'environment_name' => 'required|string|max:25',
+      'slug' => 'required',
       'description' => 'string|max:255',
     )))
     {
       //gestió errors
       //https://scotch.io/tutorials/laravel-form-validation
+      return "error validacio";
     }
 
     //store db
     $environment = new Environment;
 
     $environment->environment_name = $request->environment_name;
-    $environment->slug = str_slug($request->environment_name, '-');
+    $environment->slug = $request->slug;
     $environment->description = $request->description?$request->description:'';
     $environment->platform_id = $platform->id;
 
