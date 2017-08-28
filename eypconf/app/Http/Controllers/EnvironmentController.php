@@ -59,13 +59,15 @@ class EnvironmentController extends Controller
     $request->merge(array('slug' => str_slug($request->environment_name, '-')));
 
     //validate
+
     //TODO: validació index uniq - https://laravel.io/forum/03-11-2014-validation-unique-to-user
-    if($this->validate($request, array(
+    $validator = Validator::make($request->all(), [
       'environment_name' => 'required|string|max:25',
       'slug' => 'required',
       'description' => 'string|max:255',
-    )))
-    {
+    ]);
+
+    if ($validator->fails()) {
       //gestió errors
       //https://scotch.io/tutorials/laravel-form-validation
       //return view('environments.create')->with('platform', $platform)->with('user', $user)->with('errors',);
