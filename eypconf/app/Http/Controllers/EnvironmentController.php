@@ -71,8 +71,8 @@ class EnvironmentController extends Controller
     if ($validator->fails()) {
       //gestió errors
       //https://scotch.io/tutorials/laravel-form-validation
-      //return view('environments.create')->with('platform', $platform)->with('user', $user)->with('errors',);
-      return "error validacio";
+      // return "error validacio";
+      return view('environments.create')->with('platform', $platform)->with('user', $user)->with('errors',$validator->errors());
     }
 
     //store db
