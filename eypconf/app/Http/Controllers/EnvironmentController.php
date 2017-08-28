@@ -6,6 +6,7 @@ use App\Environment;
 use Illuminate\Http\Request;
 use App\User;
 use App\Platform;
+use Validator;
 
 class EnvironmentController extends Controller
 {
