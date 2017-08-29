@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Platform;
+use App\User;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
