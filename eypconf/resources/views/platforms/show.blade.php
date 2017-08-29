@@ -24,7 +24,7 @@
     <h3>Environments</h3>
     <ul>
     @foreach ($platform->environments as $environment)
-    <li><a href="{{ route('show.eyp.user.platform.env', ['user' => $user->username, 'platform' => $platform->platform_name, 'environment' => $environment->environment_name]) }}">{{ $environment->environment_name }}</a></li>
+    <li><a href="{{ route('show.eyp.user.platform.env', ['user' => $user->username, 'platform' => $platform->slug, 'environment' => $environment->slug]) }}">{{ $environment->environment_name }}</a></li>
     @endforeach
   </ul>
   @endif
