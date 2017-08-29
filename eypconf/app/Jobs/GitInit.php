@@ -52,20 +52,24 @@ class GitInit implements ShouldQueue
     {
       // creem contenidor de dades
       // docker run -d -n $platform->id -t eyp/git-repo
-      echo "nou container dades: ".exec("docker run -d --name platformid_".$this->platform->id." -t eyp/git-repo")."\n";
+      $cmd="docker run -d --name platformid_".$this->platform->id." -t eyp/git-repo";
+      echo "nou container dades /.$cmd./: ".exec($cmd)."\n";
 
       //inicialitzem estructura
       $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git-repo /bin/bash /usr/local/bin/init.repo.sh \"".$this->platform->platform_name."\" \"".$this->user->username."\"";
       echo "creant estructura /".$cmd."/: ".exec($cmd)."\n";
 
       // creem repo pel contenidor
-      echo "repo init: ".exec("docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo init")."\n";
+      $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo init";
+      echo "repo init /.$cmd./: ".exec($cmd)."\n";
 
       // afegim tots els fitxers
-      echo "add all: ".exec("docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo add --all")."\n";
+      $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo add --all";
+      echo "add all /.$cmd./: ".exec($cmd)."\n";
 
       // commit inicial
-      echo "commit template: ".exec("docker run --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo commit -m 'template'")."\n";
+      $cmd="docker run --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo commit -m 'template'";
+      echo "commit template /.$cmd./: ".exec($cmd)."\n";
 
       //TODO: check del q s'ha fet
 
