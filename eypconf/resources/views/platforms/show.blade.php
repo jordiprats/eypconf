@@ -19,7 +19,7 @@
   <p>{{ $platform->eyp_userid }} / {{ $platform->eyp_magic_hash }} </p>
   <p>{{ $platform->status }}</p>
   @if(count($platform->environments)=='')
-  <h3>No environments</h3>
+  <h3>No environments defined</h3>
   @else
     @foreach ($platform->environments as $environment)
   <h3>Environments</h3>
