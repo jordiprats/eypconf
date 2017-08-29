@@ -46,7 +46,7 @@ class GitInit implements ShouldQueue
   public function handle()
   {
     if($this->platform==NULL) throw new Exception ('platform is NULL');
-    if($this->user==NULL) throw new Exception ('user is NULL');
+    if($this->user==NULL)     throw new Exception ('user is NULL');
 
     if($this->platform->status==0)
     {
