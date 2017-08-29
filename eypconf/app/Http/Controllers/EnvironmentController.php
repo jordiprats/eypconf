@@ -66,6 +66,8 @@ class EnvironmentController extends Controller
       'environment_name' => 'required|string|max:25',
       'slug' => 'required|unique:environments,slug,NULL,'.$request->slug.',platform_id,'.$platform->id,
       'description' => 'string|max:255',
+    ], [
+      'slug.unique'=>'The environment name in ASCII form is already taken.',
     ]);
 
     if ($validator->fails()) {

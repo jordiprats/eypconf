@@ -13,7 +13,7 @@
     @endforeach
     @foreach ($errors->get('slug') as $error)
       {{-- mixed str_replace ( mixed $search , mixed $replace , mixed $subject [, int &$count ] ) --}}
-      <div class='alert alert-danger'>{{ str_replace('slug','environment name', $error) }}</div>
+      <div class='alert alert-danger'>{{ $error }}</div>
     @endforeach
     {{ Form::label('description', 'Short description:') }}
     {{ Form::text('description', null, array('class' => 'form-control')) }}
