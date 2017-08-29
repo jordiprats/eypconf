@@ -71,7 +71,21 @@ class GitInit implements ShouldQueue
       $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo commit -m 'template'";
       echo "commit template /".$cmd."/: ".exec($cmd)."\n";
 
-      //TODO: check del q s'ha fet
+      echo "\nCHECKS\n======\n\n";
+
+      //is git repo?
+      $returncode=666;
+      $output=[];
+      $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo status";
+      echo "git status/".$cmd."/: ".exec($cmd, $output, $returncode)."\n";
+      if($returncode!=0) throw new Exception ('not a valid git repo'); else echo "git OK\n";
+
+      //check README.md
+      $returncode=666;
+      $output=[];
+      $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git [ -f /repo/README.md ]";
+      echo "readme precense/".$cmd."/: ".exec($cmd, $output, $returncode)."\n";
+      if($returncode!=0) throw new Exception ('README.md absent'); else echo "README.md OK\n";
 
       $this->platform->status++;
 
