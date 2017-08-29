@@ -27,7 +27,7 @@ class GitInit implements ShouldQueue
   {
     $this->platform = $platform;
 
-    if(User::where('id', $this->plaftorm->user_id)->count() == 1)
+    if(User::where('id', $this->$platform->user_id)->count() == 1)
     {
       $this->user = User::where('username', $username)->first();
     }
