@@ -68,7 +68,7 @@ class GitInit implements ShouldQueue
       echo "add all /".$cmd."/: ".exec($cmd)."\n";
 
       // commit inicial
-      $cmd="docker run --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo commit -m 'template'";
+      $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo commit -m 'template'";
       echo "commit template /".$cmd."/: ".exec($cmd)."\n";
 
       //TODO: check del q s'ha fet
