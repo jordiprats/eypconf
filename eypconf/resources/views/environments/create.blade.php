@@ -9,7 +9,7 @@
     <span class='help-inline'>Although it can be any string, it will be converted to ASCII only characters ("pre producció" - "pre-produccio")</span>
     {{ Form::text('environment_name', null, array('class' => 'form-control')) }}
     @foreach ($errors->get('environment_name') as $error)
-      <div class='alert alert-danger'>{{ $error }}</span>
+      <div class='alert alert-danger'>{{ $error }}</div>
     @endforeach
     @foreach ($errors->get('slug') as $error)
       {{-- mixed str_replace ( mixed $search , mixed $replace , mixed $subject [, int &$count ] ) --}}
