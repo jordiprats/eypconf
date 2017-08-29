@@ -4,18 +4,6 @@
 <div class="container">
   @if(Auth::user()==$user)
   <div>
-    {{-- {!! Form::open(['route' => 'servertypes.create', 'method' => 'get']) !!}
-      {{ Form::hidden('platform_id', $platform->id) }}
-      {{ Form::submit('Create server type', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
-    {!! Form::close() !!}
-    {!! Form::open(['route' => 'servergroups.create', 'method' => 'get']) !!}
-      {{ Form::hidden('platform_id', $platform->id) }}
-      {{ Form::submit('Create server group', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
-    {!! Form::close() !!}
-    {!! Form::open(['route' => 'environments.create', 'method' => 'get']) !!}
-      {{ Form::hidden('platform_id', $platform->id) }}
-      {{ Form::submit('Create environment', array('class'=>'btn btn-primary', 'style'=>'float:right')) }}
-    {!! Form::close() !!} --}}
     <div class="dropdown" style="float: right;">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Actions <span class="caret"></span></button>
       <ul class="dropdown-menu" role="menu">
@@ -29,13 +17,17 @@
   <h1>Platform {{ $platform->platform_name }}</h1>
   <p>{{ $platform->description }}</p>
   <p>{{ $platform->eyp_userid }} / {{ $platform->eyp_magic_hash }} </p>
+  <p>{{ $platform->status }}</p>
+  @if(count($platform->environments)=='')
+  <h3>No environments</h3>
+  @else
+    @foreach ($platform->environments as $environment)
   <h3>Environments</h3>
   <ul>
-    <li>...</li>
-    @foreach ($platform->environments as $environment)
     <li><a href="{{ route('show.eyp.user.platform.env', ['user' => $user->username, 'platform' => $platform->platform_name, 'environment' => $environment->environment_name]) }}">{{ $environment->environment_name }}</a></li>
-    @endforeach
   </ul>
+    @endforeach
+  @endif
   <h3>Server groups</h3>
   <ul>
     <li>...</li>
