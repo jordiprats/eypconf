@@ -27,9 +27,9 @@ class GitInit implements ShouldQueue
   {
     $this->platform = $platform;
 
-    if(User::where('id', $this->$platform->user_id)->count() == 1)
+    if(User::where('id', $platform->user_id)->count() == 1)
     {
-      $this->user = User::where('username', $username)->first();
+      $this->user = User::where('id', $platform->user_id)->first();
     }
     else
     {
@@ -55,7 +55,7 @@ class GitInit implements ShouldQueue
       echo "nou container dades: ".exec("docker run -d --name platformid_".$this->platform->id." -t eyp/git-repo")."\n";
 
       //inicialitzem estructura
-      echo "template: ".exec("docker run --volumes-from platformid_".$this->platform->id." -t eyp/git-repo /bin/bash /usr/local/bin/init.repo.sh ".$this->platform->platform_name." ".'demo')."\n";
+      echo "creant estructura: ".exec("docker run --volumes-from platformid_".$this->platform->id." -t eyp/git-repo /bin/bash /usr/local/bin/init.repo.sh ".$this->platform->platform_name." ".$this->user->username)."\n";
 
       // creem repo pel contenidor
       echo "repo init: ".exec("docker run --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo init")."\n";
@@ -65,6 +65,8 @@ class GitInit implements ShouldQueue
 
       // commit inicial
       echo "commit template: ".exec("docker run --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo commit -m 'template'")."\n";
+
+      //TODO: check del q s'ha fet
 
       $this->platform->status++;
 
