@@ -21,12 +21,12 @@
   @if(count($platform->environments)=='')
   <h3>No environments defined</h3>
   @else
+    <h3>Environments</h3>
+    <ul>
     @foreach ($platform->environments as $environment)
-  <h3>Environments</h3>
-  <ul>
     <li><a href="{{ route('show.eyp.user.platform.env', ['user' => $user->username, 'platform' => $platform->platform_name, 'environment' => $environment->environment_name]) }}">{{ $environment->environment_name }}</a></li>
-  </ul>
     @endforeach
+  </ul>
   @endif
   <h3>Server groups</h3>
   <ul>
