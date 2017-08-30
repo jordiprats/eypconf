@@ -18,7 +18,7 @@ class CreateNewItem implements ShouldQueue
 
   protected $platform;
   protected $user;
-  protected $type;
+  protected $dir;
   protected $name;
 
   /**
@@ -26,10 +26,11 @@ class CreateNewItem implements ShouldQueue
    *
    * @return void
    */
-  public function __construct(Platform $platform, Model $item)
+  public function __construct(Platform $platform, string $dir, string $name)
   {
     $this->platform = $platform;
-    $this->item = $item;
+    $this->dir = $dir;
+    $this->name = $name;
 
     if(User::where('id', $platform->user_id)->count() == 1)
     {
@@ -49,13 +50,17 @@ class CreateNewItem implements ShouldQueue
    */
   public function handle()
   {
+    echo "0\n";
     if($this->platform==NULL) throw new Exception ('platform is NULL');
     if($this->user==NULL)     throw new Exception ('user is NULL');
 
+    echo "a\n";
+
     if($this->platform->status==Platform::BUILD_STATE)
       throw new Exception ('platform\'s git have not been created yet');
+    echo "b\n";
 
-    throw new Exception ('dir: /repo/'.$model::DIR_NAME.'/'.$model->slug);
+    echo 'dir: /repo/'.$this->dir.'/'.$this->name."\n";
 
     //creem nou item
 

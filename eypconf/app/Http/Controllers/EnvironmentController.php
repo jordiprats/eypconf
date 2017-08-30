@@ -88,7 +88,7 @@ class EnvironmentController extends Controller
 
     $environment->save();
 
-    dispatch(new CreateNewItem($platform, $environment));
+    dispatch(new CreateNewItem($platform, $environment::DIR_NAME, $environment->slug));
 
     //redirect
     return redirect()->route('show.eyp.user.platform.env', [ 'user' => $user->username, 'platform' => $platform->slug, 'environment' => $environment->slug ]);
