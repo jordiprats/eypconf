@@ -36,5 +36,9 @@
   <ul>
     <li>...</li>
   </ul>
+  <h3>Nodes</h3>
+  <ul>
+    <li>...</li>
+  </ul>
 </div>
 @endsection

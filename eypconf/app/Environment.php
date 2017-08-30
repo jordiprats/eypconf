@@ -8,6 +8,6 @@ class Environment extends Model
 {
   public function platform()
   {
-      return $this->belongsTo(Platform::class, 'id');
+    return $this->belongsTo(Platform::class, 'id');
   }
 }

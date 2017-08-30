@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ServerType extends Model
+class Node extends Model
 {
   public function platform()
   {

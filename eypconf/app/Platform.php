@@ -26,4 +26,9 @@ class Platform extends Model
     {
       return $this->hasMany(ServerType::class);
     }
+
+    public function nodes()
+    {
+      return $this->hasMany(Node::class);
+    }
 }
