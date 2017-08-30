@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Platform;
 use Validator;
+use App\Jobs\CreateNewItem;
 
 class EnvironmentController extends Controller
 {
