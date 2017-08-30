@@ -48,7 +48,7 @@ class GitInit implements ShouldQueue
     if($this->platform==NULL) throw new Exception ('platform is NULL');
     if($this->user==NULL)     throw new Exception ('user is NULL');
 
-    if($this->platform->status==0)
+    if($this->platform->status==Platform::BUILD_STATE)
     {
       // creem contenidor de dades
       // docker run -d -n $platform->id -t eyp/git-repo
@@ -91,5 +91,6 @@ class GitInit implements ShouldQueue
 
       $this->platform->save();
     }
+    else throw new Exception ('the fuck are you talking about?');
   }
 }
