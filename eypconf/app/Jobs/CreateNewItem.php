@@ -7,6 +7,7 @@ use App\User;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -25,11 +26,10 @@ class CreateNewItem implements ShouldQueue
    *
    * @return void
    */
-  public function __construct(Platform $platform, string $type, string $name)
+  public function __construct(Platform $platform, Model $item)
   {
     $this->platform = $platform;
-    $this->type = $type;
-    $this->name = $name;
+    $this->item = $item;
 
     if(User::where('id', $platform->user_id)->count() == 1)
     {
@@ -54,5 +54,17 @@ class CreateNewItem implements ShouldQueue
 
     if($this->platform->status==Platform::BUILD_STATE)
       throw new Exception ('platform\'s git have not been created yet');
+
+    throw new Exception ('dir: /repo/'.$model::DIR_NAME.'/'.$model->slug);
+
+    //creem nou item
+
+    // afegim tots els fitxers
+    $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo add --all";
+    echo "add all /".$cmd."/: ".exec($cmd)."\n";
+
+    // commit inicial
+    $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo commit -m 'template'";
+    echo "commit template /".$cmd."/: ".exec($cmd)."\n";
   }
 }
