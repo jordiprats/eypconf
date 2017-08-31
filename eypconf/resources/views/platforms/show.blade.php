@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
   @if(Auth::user()==$user)
+    @if($platform->status!=0)
   <div>
     <div class="dropdown" style="float: right;">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Actions <span class="caret"></span></button>
@@ -13,11 +14,20 @@
       </ul>
     </div>
   </div>
+    @else
+  <div class="dropdown" style="float: right;">
+    <button class="btn btn-secondary dropdown-toggle" type="button disabled" data-toggle="dropdown">No Actions available <span class="caret"></span></button>
+  </div>
+    @endif
   @endif
   <h1>Platform {{ $platform->platform_name }}</h1>
   <p>{{ $platform->description }}</p>
   <p>{{ $platform->eyp_userid }} / {{ $platform->eyp_magic_hash }} </p>
-  <p>{{ $platform->status }}</p>
+  @if($platform->status!=0)
+  <p>Platform ready</p>
+  @else
+  <p>Please wait while we are creating you platform</p>
+  @end
   @if(count($platform->environments)=='')
   <h3>No environments defined</h3>
   @else
