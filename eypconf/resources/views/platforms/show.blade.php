@@ -27,7 +27,7 @@
   <p>Platform ready</p>
   @else
   <p>Please wait while we are creating you platform</p>
-  @end
+  @endif
   @if(count($platform->environments)=='')
   <h3>No environments defined</h3>
   @else
