@@ -46,7 +46,7 @@ class PlatformController extends Controller
     // validate
     $this->validate($request, array(
       'platform_name' => 'required|string|max:255',
-      'description' => 'string|max:255',
+      'description' => 'max:255',
     ));
 
     // store in the db
