@@ -85,7 +85,7 @@ class CreateNewItem implements ShouldQueue
     $returncode=666;
     $output=[];
     $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git [ -f '/repo/".$this->dir.'/'.$this->name."/.gitkeep' ]";
-    echo "readme precense/".$cmd."/: ".exec($cmd, $output, $returncode)."\n";
+    echo "gitkeep and directory precense/".$cmd."/: ".exec($cmd, $output, $returncode)."\n";
     if($returncode!=0) throw new Exception ('mkdir failed'); else echo "mkdir ok\n";
   }
 }
