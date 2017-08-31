@@ -74,6 +74,8 @@ class CreateNewItem implements ShouldQueue
     $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo commit -m 'mkdir ".$this->dir.' // '.$this->name."'";
     echo "commit template /".$cmd."/: ".exec($cmd)."\n";
 
+    echo "\nCHECKS\n======\n\n";
+
     $returncode=666;
     $output=[];
     $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git git -C /repo status";
