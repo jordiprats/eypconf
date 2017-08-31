@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 @section('content')
 <div class="container">
   @if(Auth::user()==$user)
@@ -15,8 +15,8 @@
     </div>
   </div>
     @else
-  <div class="dropdown" style="float: right;">
-    <button class="btn btn-secondary dropdown-toggle" type="button disabled" data-toggle="dropdown">No Actions available <span class="caret"></span></button>
+  <div style="float: right;">
+    <button class="btn btn-secondary disabled" type="button">No Actions available </span></button>
   </div>
     @endif
   @endif
@@ -26,7 +26,7 @@
   @if($platform->status!=0)
   <p>Platform ready</p>
   @else
-  <p>Please wait while we are creating you platform</p>
+  <p><i class="fa fa-circle-o-notch fa-spin"></i> Please wait while we are creating you platform</p>
   @endif
   @if(count($platform->environments)=='')
   <h3>No environments defined</h3>
