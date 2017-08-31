@@ -50,15 +50,11 @@ class CreateNewItem implements ShouldQueue
    */
   public function handle()
   {
-    echo "0\n";
     if($this->platform==NULL) throw new Exception ('platform is NULL');
     if($this->user==NULL)     throw new Exception ('user is NULL');
 
-    echo "a\n";
-
     if($this->platform->status==Platform::BUILD_STATE)
       throw new Exception ('platform\'s git have not been created yet');
-    echo "b\n";
 
     echo 'mkdir: /repo/'.$this->dir.'/'.$this->name."\n";
 
