@@ -11,14 +11,14 @@
   <hr/>
 
   <div class="row">
-  {{ Form::model($user, array('route' => 'user.update')) }}
+  {{ Form::model($user, array('route' => 'user.update', 'files' => true)) }}
     <div class="col-*-*">
       <div class="image-upload">
         <label for="file-input">
           <img src="/img/users/profile/{{ $user->avatar }}" class="img-responsive img-thumbnail"/>
         </label>
 
-        <input id="file-input" type="file" style="display: none" />
+        <input name="avatar" id="file-input" type="file" style="display: none" />
       </div>
     </div>
     <hr />

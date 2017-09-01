@@ -44,6 +44,17 @@ class UserController extends Controller
       'name' => 'required|string|max:255',
     ));
 
+    //upload file
+    if( $request->hasFile('avatar') ) {
+        $file = $request->file('avatar');
+
+        $ext = $file->guessClientExtension();
+
+        // save
+
+        $file->saveAs('users/profile/avatars', $user->slug.".".$ext);
+    }
+
     //save
     $user = Auth::user();
     $user->name = $request->input('name');
