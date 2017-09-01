@@ -44,6 +44,8 @@ class UserController extends Controller
       'name' => 'required|string|max:255',
     ));
 
+    $user = Auth::user();
+
     //upload file
     if( $request->hasFile('avatar') ) {
         $file = $request->file('avatar');
@@ -52,12 +54,13 @@ class UserController extends Controller
 
         // save
 
-        $file->saveAs('users/profile/avatars', $user->slug.".".$ext);
+        $file->storeAs('users/profile/avatars', $user->slug.".".$ext);
     }
 
     //save
-    $user = Auth::user();
     $user->name = $request->input('name');
+
+    $user->save();
 
     //flash data
     Session::flash('status', 'Profile updated!');
