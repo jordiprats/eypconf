@@ -54,9 +54,9 @@ class UserController extends Controller
 
         // save
 
-        $file->storeAs('users/profile/avatars', $user->slug.".".$ext);
+        $file->storeAs('users/profile/avatars/'.ord($user->slug), $user->slug.".".$ext);
 
-        $user->avatar = "avatars/".$user->slug.".".$ext;
+        $user->avatar = "avatars/".ord($user->slug)."/".$user->slug.".".$ext;
     }
 
     //save
