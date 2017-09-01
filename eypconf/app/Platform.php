@@ -33,4 +33,9 @@ class Platform extends Model
   {
     return $this->hasMany(Node::class);
   }
+
+  public function puppetinstances()
+  {
+    return $this->hasMany(PuppetInstance::class);
+  }
 }
