@@ -12,6 +12,7 @@
 
   <div class="row">
   {{ Form::model($user, array('route' => 'user.update', 'files' => true)) }}
+  {{--  TODO: jcrop o similar--}}
     <div class="col-*-*">
       <div class="image-upload">
         <label for="file-input">
