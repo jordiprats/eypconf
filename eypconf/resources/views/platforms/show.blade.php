@@ -19,7 +19,7 @@
   </div>
     @endif
   @endif
-  <h1>Platform {{ $platform->platform_name }}</h1>
+  <h1><a href="{{ route('show.eyp.user', ['user' => $user->username ]) }}">{{ $user->username }}</a> / {{ $platform->platform_name }}</h1>
   <p>{{ $platform->description }}</p>
   <p>{{ $platform->eyp_userid }} / {{ $platform->eyp_magic_hash }} </p>
   @if($platform->status!=0)
