@@ -87,5 +87,7 @@ class CreateNewItem implements ShouldQueue
     $cmd="docker run -i --volumes-from platformid_".$this->platform->id." -t eyp/git [ -f '/repo/".$this->dir.'/'.$this->name."/.gitkeep' ]";
     echo "gitkeep and directory precense/".$cmd."/: ".exec($cmd, $output, $returncode)."\n";
     if($returncode!=0) throw new Exception ('mkdir failed'); else echo "mkdir ok\n";
+
+    //TODO: per un update del estat del canvi
   }
 }
