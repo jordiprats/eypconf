@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class EnvironmentStatus extends Migration
+class STStatus extends Migration
 {
   /**
    * Run the migrations.
@@ -13,7 +13,7 @@ class EnvironmentStatus extends Migration
    */
   public function up()
   {
-    Schema::table('environments', function (Blueprint $table) {
+    Schema::table('servertypes', function (Blueprint $table) {
       $table->integer('status')->default('0');
     });
   }
@@ -25,7 +25,7 @@ class EnvironmentStatus extends Migration
    */
   public function down()
   {
-    Schema::table('environments', function (Blueprint $table) {
+    Schema::table('servertypes', function (Blueprint $table) {
       $table->dropColumn('status');
     });
   }
