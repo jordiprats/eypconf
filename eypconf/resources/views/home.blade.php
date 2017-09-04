@@ -16,7 +16,7 @@
                   <h1>Platforms</h1>
                   <ul>
                     @foreach ($platforms as $platform)
-                    <li><a href="{{ route('show.eyp.user.platform', ['user' => $user->username, 'platform' => $platform->slug ]) }}">{{ $platform->platform_name }}</a></li>
+                    <li>@include('breadcrumbs.platform')</li>
                     @endforeach
                   </ul>
                 </div>

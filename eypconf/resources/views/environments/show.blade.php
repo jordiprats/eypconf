@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-  <h1>@include('breadcrumbs.user') / <a href="{{ route('show.eyp.user.platform', ['user' => $user->username, 'platform' => $platform->slug ]) }}">{{ $platform->platform_name }}</a> / environment {{ $environment->environment_name }}</h1>
+  <h1>@include('breadcrumbs.user') / @include('breadcrumbs.platform') / environment {{ $environment->environment_name }}</h1>
   {{--  @if($environment->status!=1) <i class="fa fa-circle-o-notch fa-spin"></i> @endif --}}
   <hr/>
   <p>{{ $environment->description }}</p>
