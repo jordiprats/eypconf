@@ -103,7 +103,11 @@ class EnvironmentController extends Controller
   //TODO: falta implemetar
   public function showEnvironment($username, $platform_name, $environment_name)
   {
-    return $username.' '.$platform_name.' '.$environment_name;
+    $user = User::where('username', $username)->first();
+    $environment = Environment::where('slug', $environment_name)->first();
+    $platform = Platform::where('slug', $platform_name)->first();
+    
+    return view('environments.show')->with('platform', $platform)->with('environment', $environment)->with('user', $user);
   }
 
   /**
@@ -114,7 +118,11 @@ class EnvironmentController extends Controller
    */
   public function show(Environment $environment)
   {
-    return "???";
+    $platform = Platform::find($environment->platform_id);
+
+    $user = User::find($plaftom->user_id);
+
+    return showEnvironment($user->slug, $plaftom->slug, $environment->slug);
   }
 
   /**
