@@ -87,6 +87,10 @@ class GitInit implements ShouldQueue
       echo "readme precense/".$cmd."/: ".exec($cmd, $output, $returncode)."\n";
       if($returncode!=0) throw new Exception ('README.md absent'); else echo "README.md OK\n";
 
+      $this->platform->status++;
+
+      $this->platform->save();
+
       $this->platform->setStatus($this->platform->status+1);
     }
     else throw new Exception ('the fuck are you talking about?');

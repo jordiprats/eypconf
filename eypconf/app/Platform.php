@@ -4,16 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Platform extends Model implements bgProcess
+class Platform extends Model
 {
   const BUILD_STATE = 0;
   const READY_STATE = 1;
-
-  public function setStatus(int $value)
-  {
-    $this->status=$value;
-    $this-save();
-  }
 
   public function user()
   {
