@@ -61,7 +61,6 @@
                                       </a>
 
                                       <form id="home-form" action="{{ route('home') }}" method="GET" style="display: none;">
-                                          {{ csrf_field() }}
                                       </form>
                                   </li>
                                   <li>
@@ -77,7 +76,6 @@
                                       </a>
 
                                       <form id="settings-form" action="{{ route('user.edit') }}" method="GET" style="display: none;">
-                                          {{ csrf_field() }}
                                       </form>
                                   </li>
                                   <li>
