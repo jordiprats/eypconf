@@ -8,12 +8,15 @@
     {{ Form::label('environment_name', 'Environment name:') }}
     <span class='help-inline'>Although it can be any string, it will be converted to ASCII only characters ("pre producció" - "pre-produccio")</span>
     {{ Form::text('environment_name', null, array('class' => 'form-control')) }}
-    @foreach ($errors->get('environment_name') as $error)
+    @if(count($errors->get('environment_name'))>0)
+      @foreach ($errors->get('environment_name') as $error)
       <div class='alert alert-danger'>{{ $error }}</div>
-    @endforeach
-    @foreach ($errors->get('slug') as $error)
+      @endforeach
+    @else
+      @foreach ($errors->get('slug') as $error)
       <div class='alert alert-danger'>{{ $error }}</div>
-    @endforeach
+      @endforeach
+    @endif
     {{ Form::label('description', 'Short description:') }}
     {{ Form::text('description', null, array('class' => 'form-control')) }}
     @foreach ($errors->get('description') as $error)

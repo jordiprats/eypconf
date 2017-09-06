@@ -64,7 +64,7 @@ class EnvironmentController extends Controller
 
     //TODO: validació index uniq - https://laravel.io/forum/03-11-2014-validation-unique-to-user
     $validator = Validator::make($request->all(), [
-      'environment_name' => 'required|string|max:25',
+      'environment_name' => 'required|string|max:25|unique:environments,environment_name,NULL,'.$request->environment_name.',platform_id,'.$platform->id,
       'slug' => 'unique:environments,slug,NULL,'.$request->slug.',platform_id,'.$platform->id,
       'description' => 'string|max:255',
     ], [
@@ -106,7 +106,7 @@ class EnvironmentController extends Controller
     $user = User::where('username', $username)->first();
     $environment = Environment::where('slug', $environment_name)->first();
     $platform = Platform::where('slug', $platform_name)->first();
-    
+
     return view('environments.show')->with('platform', $platform)->with('environment', $environment)->with('user', $user);
   }
 
