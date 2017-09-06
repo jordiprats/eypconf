@@ -12,7 +12,6 @@
       <div class='alert alert-danger'>{{ $error }}</div>
     @endforeach
     @foreach ($errors->get('slug') as $error)
-      {{-- mixed str_replace ( mixed $search , mixed $replace , mixed $subject [, int &$count ] ) --}}
       <div class='alert alert-danger'>{{ $error }}</div>
     @endforeach
     {{ Form::label('description', 'Short description:') }}
