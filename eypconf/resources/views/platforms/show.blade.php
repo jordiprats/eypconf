@@ -19,7 +19,10 @@
   </div>
     @endif
   @endif
-  <h1>@include('breadcrumbs.user') / {{ $platform->platform_name }}</h1>
+  <h1><ol class="breadcrumb">
+    <li class="breadcrumb-item">@include('breadcrumbs.user')</li>
+    <li class="breadcrumb-item active">{{ $platform->platform_name }}</li>
+  </ol></h1>
   <p>{{ $platform->description }}</p>
   <p>{{ $platform->eyp_userid }} / {{ $platform->eyp_magic_hash }} </p>
   @if($platform->status!=0)
