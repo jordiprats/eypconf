@@ -3,10 +3,10 @@
 <div class="container">
   @if(Auth::user()==$user)
     @if($platform->status!=0)
-  <div style="float: right;">
+  <div class="card" style="float: right;">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
-      Launch demo modal
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal3" style="display: inline-block;">
+      Delete platform
     </button>
 
     <!-- Modal -->
@@ -14,23 +14,21 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModal3Label">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
+            <button type="button btn-secondary" class="close" data-dismiss="modal" aria-label="Close">
+              X
             </button>
+            <h5 class="modal-title" id="exampleModal3Label">Delete platform</h5>
           </div>
           <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            {!! Form::open(['route' => 'platforms.destroy', 'method' => 'delete']) !!}
+              {{ Form::submit('Yes, I\'m sure to delete this platform', array('class'=>'btn-danger btn-lg', 'style'=>'float:right')) }}
+            {!! Form::close() !!}
           </div>
         </div>
       </div>
     </div>
 
-    <div class="dropdown">
+    <div class="dropdown" style="display: inline-block;">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Actions <span class="caret"></span></button>
       <ul class="dropdown-menu" role="menu">
         <li><a href="{{ route('environments.create', [$user->username, $platform->platform_name]) }}">Create environment</a></li>
