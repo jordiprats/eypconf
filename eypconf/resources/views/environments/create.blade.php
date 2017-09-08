@@ -20,7 +20,7 @@
     {{ Form::label('description', 'Short description:') }}
     {{ Form::text('description', null, array('class' => 'form-control')) }}
     @foreach ($errors->get('description') as $error)
-      <div class='alert alert-danger'>{{ $error }}</span>
+      <div class='alert alert-danger'>{{ $error }}</div>
     @endforeach
 
     {{ Form::submit('Create environment', array('class'=>'btn-success btn-lg btn-block', 'style' => 'margin-top: 20px;')) }}
