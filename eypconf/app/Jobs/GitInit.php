@@ -90,8 +90,6 @@ class GitInit implements ShouldQueue
       $this->platform->status++;
 
       $this->platform->save();
-
-      $this->platform->setStatus($this->platform->status+1);
     }
     else throw new Exception ('the fuck are you talking about?');
   }
