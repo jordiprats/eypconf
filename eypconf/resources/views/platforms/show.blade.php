@@ -20,8 +20,9 @@
             <h5 class="modal-title" id="exampleModal3Label">Delete platform</h5>
           </div>
           <div class="modal-body">
-            {!! Form::open(['route' => 'platforms.destroy', 'method' => 'delete']) !!}
-              {{ Form::submit('Yes, I\'m sure to delete this platform', array('class'=>'btn-danger btn-lg', 'style'=>'float:right')) }}
+            Once you delete a platform, there is no going back. Please be certain. 
+            {!! Form::open(['route' => ['platforms.destroy', $platform->id], 'method' => 'delete']) !!}
+              {{ Form::submit('Yes, I\'m sure to delete this platform', array('class'=>'btn-danger btn-lg')) }}
             {!! Form::close() !!}
           </div>
         </div>
