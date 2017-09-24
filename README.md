@@ -17,3 +17,9 @@ eypconf - elarge your puppet configuration
 * git clone your project.
 * Make a vendors folder in the root of your project.
 * cd to root of your project and run composer update. This command will look for vendors folder in the root and will install all the packages required by your project in it.
+* touch storage/logs/laravel.log; chown www-data storage/logs/laravel.log; chmod 666 storage/logs/laravel.log
+* chown www-data storage -R
+* chmod 777 bootstrap/cache/
+* php artisan key:generate
+* php artisan config:clear
+* php artisan migrate:refresh
