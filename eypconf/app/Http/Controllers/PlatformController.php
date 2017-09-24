@@ -67,8 +67,17 @@ class PlatformController extends Controller
       $platform->user_id = $user->id;
 
       $platform->save();
-      
-      dispatch(new GitInit($platform));
+
+      try
+      {
+        // try code
+        dispatch(new GitInit($platform));
+      }
+      catch(\Exception $e){
+        $platform->status=-1;
+        $platform->save();
+      }
+
     }
 
     // redirect

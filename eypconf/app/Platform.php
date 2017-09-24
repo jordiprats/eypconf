@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Platform extends Model
 {
+  const NOT_SCHEDULED = -1;
   const BUILD_STATE = 0;
   const READY_STATE = 1;
 
