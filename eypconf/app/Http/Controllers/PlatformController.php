@@ -66,9 +66,9 @@ class PlatformController extends Controller
       $platform->eyp_magic_hash = substr(md5(str_random(10).uniqid().$user->id),0,12).substr(md5(str_random(10).$platform->description.uniqid().$request->platform_name),0,12);
       $platform->user_id = $user->id;
 
-      $platform->save();
-
       dispatch(new GitInit($platform));
+      
+      $platform->save();
     }
 
     // redirect
